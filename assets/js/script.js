@@ -115,10 +115,10 @@ function populateCityWeather(city, citySearchList) {
 
             var forecastPosition = (i + 2) / 8;
 
-            console.log("#forecast-date" + forecastPosition);
+            console.log("#date" + forecastPosition);
 
-            $("#forecast-date" + forecastPosition).empty();
-            $("#forecast-date" + forecastPosition).append(
+            $("#date" + forecastPosition).empty();
+            $("#date" + forecastPosition).append(
               forecastDate.text(nowMoment.add(1, "days").format("M/D/YYYY"))
             );
 
@@ -130,21 +130,21 @@ function populateCityWeather(city, citySearchList) {
                 ".png"
             );
 
-            $("#forecast-icon" + forecastPosition).empty();
-            $("#forecast-icon" + forecastPosition).append(forecastIcon);
+            $("#icon" + forecastPosition).empty();
+            $("#icon" + forecastPosition).append(forecastIcon);
 
             console.log(forecast.list[i].weather[0].icon);
 
-            $("#forecast-temp" + forecastPosition).text(
+            $("#temp" + forecastPosition).text(
               "Temp: " + forecast.list[i].main.temp + " °F"
             );
-            $("#forecast-humidity" + forecastPosition).text(
+            $("#humidity" + forecastPosition).text(
               "Humidity: " + forecast.list[i].main.humidity + "%"
             );
 
             $(".forecast").attr(
               "style",
-              "background-color:dodgerblue; color:white"
+              "background-color:lightblue; color:white"
             );
           }
         });
@@ -190,7 +190,7 @@ $(document).ready(function() {
     
   });
 
-  $("#city-list").on("click", "button", function(event) {
+  cityEl.on("click", "button", function(event) {
     event.preventDefault();
     var city = $(this).text();
 
