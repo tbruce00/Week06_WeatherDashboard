@@ -1,5 +1,13 @@
+var cityEl = $('#cityList');
+var nameEl = $('#cityName');
+var iconEl = $('#weatherSymbol');
+var tempEl = $('#currentTemp');
+var humidEl = $('#currentHumidity');
+var windEl = $('#currentWind');
+var uvEl = $('#currentUv');
+
 function createCityList(citySearchList) {
-  $("#city-list").empty();
+  cityEl.empty();
 
   var keys = Object.keys(citySearchList);
   for (var i = 0; i < keys.length; i++) {
@@ -14,7 +22,7 @@ function createCityList(citySearchList) {
     var titleCasedCity = splitStr.join(" ");
     cityListEntry.text(titleCasedCity);
 
-    $("#city-list").append(cityListEntry);
+    cityEl.append(cityListEntry);
   }
 }
 
@@ -48,25 +56,25 @@ function populateCityWeather(city, citySearchList) {
       var nowMoment = moment();
 
       var displayMoment = $("<h3>");
-      $("#city-name").empty();
-      $("#city-name").append(
+      nameEl.empty();
+      nameEl.append(
         displayMoment.text("(" + nowMoment.format("M/D/YYYY") + ")")
       );
 
       var cityName = $("<h3>").text(weather.name);
-      $("#city-name").prepend(cityName);
+      nameEl.prepend(cityName);
 
       var weatherIcon = $("<img>");
       weatherIcon.attr(
         "src",
         "https://openweathermap.org/img/w/" + weather.weather[0].icon + ".png"
       );
-      $("#current-icon").empty();
-      $("#current-icon").append(weatherIcon);
+      iconEl.empty();
+      iconEl.append(weatherIcon);
 
-      $("#current-temp").text("Temperature: " + weather.main.temp + " °F");
-      $("#current-humidity").text("Humidity: " + weather.main.humidity + "%");
-      $("#current-wind").text("Wind Speed: " + weather.wind.speed + " MPH");
+      tempEl.text("Temperature: " + weather.main.temp + " °F");
+      humidEl.text("Humidity: " + weather.main.humidity + "%");
+      windEl.text("Wind Speed: " + weather.wind.speed + " MPH");
 
       latitude = weather.coord.lat;
       longitude = weather.coord.lon;
@@ -88,8 +96,8 @@ function populateCityWeather(city, citySearchList) {
         var uvIndexDisplay = $("<button>");
         uvIndexDisplay.addClass("btn btn-danger");
 
-        $("#current-uv").text("UV Index: ");
-        $("#current-uv").append(uvIndexDisplay.text(uvIndex[0].value));
+        uvEl.text("UV Index: ");
+        uvEl.append(uvIndexDisplay.text(uvIndex[0].value));
         console.log(uvIndex[0].value);
 
         $.ajax({
