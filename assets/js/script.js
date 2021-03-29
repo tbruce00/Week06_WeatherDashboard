@@ -5,6 +5,10 @@ var tempEl = $('#currentTemp');
 var humidEl = $('#currentHumidity');
 var windEl = $('#currentWind');
 var uvEl = $('#currentUv');
+var searchEl = $('#searchButton');
+var cityinputEl = $('#citySearch');
+
+
 
 function createCityList(citySearchList) {
   cityEl.empty();
@@ -168,9 +172,9 @@ $(document).ready(function() {
 
 
 
-  $("#search-button").on("click", function(event) {
+  searchEl.on("click", function(event) {
     event.preventDefault();
-    var city = $("#city-input")
+    var city = cityinputEl
       .val()
       .trim()
       .toLowerCase();
